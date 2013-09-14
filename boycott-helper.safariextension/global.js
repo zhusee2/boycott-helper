@@ -2,7 +2,12 @@ var BoycottHelper = {};
 
 function reloadBlacklist() {
   blacklistJSON = safari.extension.settings.getItem("blacklist");
-  BoycottHelper.blacklist = JSON.parse(blacklistJSON);
+
+  if (blacklistJSON == null) {
+    BoycottHelper.blacklist = [];
+  } else {
+    BoycottHelper.blacklist = JSON.parse(blacklistJSON);
+  }
 }
 
 function addRuleToBlacklist(newRule) {
