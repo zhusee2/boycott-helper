@@ -20,6 +20,21 @@
 	<dict>
 		<key>Global Page</key>
 		<string>global.html</string>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Identifier</key>
+				<string>btnBoycott</string>
+				<key>Image</key>
+				<string>toolbar-icon.png</string>
+				<key>Label</key>
+				<string>Boycott Helper</string>
+				<key>Palette Label</key>
+				<string>抵制小幫手</string>
+				<key>Tool Tip</key>
+				<string>抵制小幫手</string>
+			</dict>
+		</array>
 	</dict>
 	<key>Content</key>
 	<dict>
