@@ -1,13 +1,9 @@
-/*
-blackList = [
-  "*.google.com.tw",
-  "www.appledaily.com.tw/realtimenews/article/politics/*"
-]
-*/
+var BoycottHelper = {};
 
-blacklistJSON = safari.extension.settings.getItem("blacklist");
-
-blacklist = JSON.parse(blacklistJSON);
+function reloadBlacklist() {
+  blacklistJSON = safari.extension.settings.getItem("blacklist");
+  BoycottHelper.blacklist = JSON.parse(blacklistJSON);
+}
 
 // Black List Rules:
 // 1. "*.bad.domain.com"
@@ -33,6 +29,7 @@ function interpretBlackListRule(rule) {
 }
 
 function beforeNavHandler(event) {
+  var blacklist = BoycottHelper.blacklist;
   if (blacklist == null) return;
 
   console.log("Before heading to:", event.url);
@@ -50,4 +47,5 @@ function beforeNavHandler(event) {
   }
 };
 
+reloadBlacklist();
 safari.application.addEventListener('beforeNavigate', beforeNavHandler);
