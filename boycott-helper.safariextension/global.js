@@ -1,7 +1,13 @@
+/*
 blackList = [
   "*.google.com.tw",
   "www.appledaily.com.tw/realtimenews/article/politics/*"
 ]
+*/
+
+blacklistJSON = safari.extension.settings.getItem("blacklist");
+
+blacklist = JSON.parse(blacklistJSON);
 
 // Black List Rules:
 // 1. "*.bad.domain.com"
@@ -27,13 +33,19 @@ function interpretBlackListRule(rule) {
 }
 
 function beforeNavHandler(event) {
+  if (blacklist == null) return;
+
   console.log("Before heading to:", event.url);
 
-  for (var i = 0; i < blackList.length; i++) {
-    var regExpRule = interpretBlackListRule(blackList[i]);
+  for (var i = 0; i < blacklist.length; i++) {
+    var regExpRule = interpretBlackListRule(blacklist[i]);
 
-    if (event.url.match(regExpRule) && !confirm("您已經設定要抵制本網站。確定要繼續嗎？")) {
-      event.preventDefault();
+    if ( event.url.match(regExpRule) ) {
+      console.log("Blacklist Match:", blacklist[i]);
+
+      if (!confirm("您已經設定要抵制本網站。確定要繼續嗎？")) { // User choose "Cancel"
+        event.preventDefault();
+      }
     }
   }
 };
