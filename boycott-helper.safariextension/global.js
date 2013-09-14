@@ -5,6 +5,12 @@ function reloadBlacklist() {
   BoycottHelper.blacklist = JSON.parse(blacklistJSON);
 }
 
+function addRuleToBlacklist(newRule) {
+  console.log("Add new Blacklist:", newRule);
+  BoycottHelper.blacklist.push(newRule);
+  safari.extension.settings.setItem("blacklist", JSON.stringify(BoycottHelper.blacklist));
+}
+
 // Black List Rules:
 // 1. "*.bad.domain.com"
 // 2. "bad-website.xxx/horrible/*"
@@ -47,5 +53,25 @@ function beforeNavHandler(event) {
   }
 };
 
+function commandHandler(commandEvent) {
+  switch (commandEvent.command) {
+    case "addToBlacklist":
+      var currentUrl = safari.application.activeBrowserWindow.activeTab.url,
+          currentDomain = currentUrl.match(/\:\/\/([^\/]+)/)[1],
+          newBlacklistRule = prompt("您確定要抵制此網站？", currentDomain);
+
+      if (newBlacklistRule != null) {
+        addRuleToBlacklist(newBlacklistRule);
+      }
+
+      break;
+    case "editBlacklist":
+      break;
+    default:
+      break;
+  }
+}
+
 reloadBlacklist();
-safari.application.addEventListener('beforeNavigate', beforeNavHandler);
+safari.application.addEventListener("beforeNavigate", beforeNavHandler);
+safari.application.addEventListener("command", commandHandler);
