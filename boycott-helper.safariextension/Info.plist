@@ -20,15 +20,49 @@
 	<dict>
 		<key>Global Page</key>
 		<string>global.html</string>
+		<key>Menus</key>
+		<array>
+			<dict>
+				<key>Identifier</key>
+				<string>menu-boycott</string>
+				<key>Menu Items</key>
+				<array>
+					<dict>
+						<key>Command</key>
+						<string>addToBlacklist</string>
+						<key>Identifier</key>
+						<string>menuitem-add-boycott</string>
+						<key>Title</key>
+						<string>加入抵制清單</string>
+					</dict>
+					<dict>
+						<key>Identifier</key>
+						<string>menuitem-seperator-below-add</string>
+						<key>Separator</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Command</key>
+						<string>editBlacklist</string>
+						<key>Identifier</key>
+						<string>menuitem-edit-blacklist</string>
+						<key>Title</key>
+						<string>管理抵制清單⋯</string>
+					</dict>
+				</array>
+			</dict>
+		</array>
 		<key>Toolbar Items</key>
 		<array>
 			<dict>
 				<key>Identifier</key>
-				<string>btnBoycott</string>
+				<string>btn-boycott</string>
 				<key>Image</key>
 				<string>toolbar-icon.png</string>
 				<key>Label</key>
 				<string>Boycott Helper</string>
+				<key>Menu</key>
+				<string>menu-boycott</string>
 				<key>Palette Label</key>
 				<string>抵制小幫手</string>
 				<key>Tool Tip</key>
