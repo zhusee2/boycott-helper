@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>編輯抵制清單 | 抵制小幫手</title>
+  <style>
+    #blacklist {
+      width: 80%;
+      font: 16px/1.7 monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>編輯抵制清單</h1>
+  <p>請在下方編輯您的抵制清單。請以 JSON 格式編輯。</p>
+
+  <form action="#">
+    <textarea name="blacklist" id="blacklist" rows="10"></textarea><br>
+    <button type="submit">儲存</button>
+  </form>
+
+  <script>
+    var blacklist = [];
+
+    function messageHandler(messageEvent) {
+      if (messageEvent.name == "blacklist") {
+        blacklist = messageEvent.message;
+        document.getElementById("blacklist").value = blacklist;
+      }
+    }
+
+    function updateBlacklist(event) {
+      var newBlacklist = document.getElementById("blacklist").value,
+          blacklistArray, newBlacklistString;
+
+      event.preventDefault();
+
+      newBlacklist = newBlacklist.trim();
+
+      if (newBlacklist == "") {
+        newBlacklist = "[]";
+      }
+
+      try {
+        blacklistArray = JSON.parse(newBlacklist);
+        newBlacklistString = JSON.stringify(blacklistArray);
+
+        safari.self.tab.dispatchMessage("updateBlacklist", newBlacklistString);
+      } catch(e) {
+        alert("您編輯的抵制清單格式不正確。請依照 JSON 格式編輯後，再試一次。");
+      }
+
+      alert("抵制清單已更新成功。")
+    }
+
+    safari.self.addEventListener("message", messageHandler);
+    safari.self.tab.dispatchMessage("getBlacklist");
+
+    document.querySelector("form").addEventListener("submit", updateBlacklist);
+  </script>
+
+</body>
+</html>

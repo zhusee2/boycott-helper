@@ -70,11 +70,31 @@ function commandHandler(commandEvent) {
       if (newBlacklistRule != null) {
         addRuleToBlacklist(newBlacklistRule);
       }
+      break;
 
-      break;
     case "editBlacklist":
+      var newTab = safari.application.activeBrowserWindow.openTab();
+      newTab.url = safari.extension.baseURI + "settings.html";
       break;
+
     default:
+      break;
+  }
+}
+
+function messageHandler(messageEvent) {
+  switch (messageEvent.name) {
+    case "getBlacklist":
+      var blacklistString = safari.extension.settings.getItem("blacklist");
+      blacklistString = blacklistString.replace(/^\[/, "[\n");
+      blacklistString = blacklistString.replace(/\,/g, ",\n");
+      blacklistString = blacklistString.replace(/\]$/, "\n]");
+
+      messageEvent.target.page.dispatchMessage("blacklist", blacklistString);
+      break;
+
+    case "updateBlacklist":
+      safari.extension.settings.setItem("blacklist", messageEvent.message);
       break;
   }
 }
@@ -82,4 +102,6 @@ function commandHandler(commandEvent) {
 reloadBlacklist();
 safari.application.addEventListener("beforeNavigate", beforeNavHandler);
 safari.application.addEventListener("command", commandHandler);
+safari.application.addEventListener("message", messageHandler);
 safari.extension.settings.addEventListener("change", reloadBlacklist);
+
