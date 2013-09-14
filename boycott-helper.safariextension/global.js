@@ -8,6 +8,8 @@ function reloadBlacklist() {
   } else {
     BoycottHelper.blacklist = JSON.parse(blacklistJSON);
   }
+
+  console.log("Blacklist reloaded.");
 }
 
 function addRuleToBlacklist(newRule) {
@@ -80,3 +82,4 @@ function commandHandler(commandEvent) {
 reloadBlacklist();
 safari.application.addEventListener("beforeNavigate", beforeNavHandler);
 safari.application.addEventListener("command", commandHandler);
+safari.extension.settings.addEventListener("change", reloadBlacklist);
