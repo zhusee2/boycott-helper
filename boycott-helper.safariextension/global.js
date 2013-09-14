@@ -86,9 +86,12 @@ function messageHandler(messageEvent) {
   switch (messageEvent.name) {
     case "getBlacklist":
       var blacklistString = safari.extension.settings.getItem("blacklist");
-      blacklistString = blacklistString.replace(/^\[/, "[\n");
-      blacklistString = blacklistString.replace(/\,/g, ",\n");
-      blacklistString = blacklistString.replace(/\]$/, "\n]");
+
+      if (blacklistString != null) {
+        blacklistString = blacklistString.replace(/^\[/, "[\n");
+        blacklistString = blacklistString.replace(/\,/g, ",\n");
+        blacklistString = blacklistString.replace(/\]$/, "\n]");
+      }
 
       messageEvent.target.page.dispatchMessage("blacklist", blacklistString);
       break;
