@@ -35,7 +35,11 @@
     };
 
     document.querySelector('.btn-continue').addEventListener('click', function(event) {
-      safari.self.tab.dispatchMessage("allowOnce", redirectUrl);
+      var tempAllowedBlacklist = {
+        rule: blacklistRule,
+        url: redirectUrl
+      };
+      safari.self.tab.dispatchMessage("allowOnce", tempAllowedBlacklist);
       event.preventDefault();
     });
 

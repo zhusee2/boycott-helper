@@ -49,7 +49,15 @@ function beforeNavHandler(event) {
 
   for (var i = 0; i < blacklist.length; i++) {
     var blacklistRule = blacklist[i],
-        regExpRule = interpretBlackListRule(blacklistRule);
+        regExpRule = interpretBlackListRule(blacklistRule),
+        tempAllowedRules = event.target.tempAllowed;
+
+    if (tempAllowedRules && Array.isArray(tempAllowedRules) ) {
+      if (tempAllowedRules.indexOf(blacklistRule) != -1) {
+        console.log("Temp Allowed for this Tab:", blacklistRule);
+        return;
+      }
+    }
 
     if ( event.url.match(regExpRule) ) {
       console.log("Blacklist Match:", blacklistRule);
@@ -66,7 +74,6 @@ function beforeNavHandler(event) {
           rule: blacklistRule,
           url: event.url
         }
-        console.log(blacklistWarning);
         currentActiveTab.page.dispatchMessage("blacklistWarning", blacklistWarning);
       }, 100);
     }
@@ -114,7 +121,14 @@ function messageHandler(messageEvent) {
       break;
 
     case "allowOnce":
-      console.log(messageEvent.message);
+      tempAllowedBlacklist = messageEvent.message;
+
+      if (messageEvent.target.tempAllowed == null) {
+        messageEvent.target.tempAllowed = []
+      }
+
+      messageEvent.target.tempAllowed.push(tempAllowedBlacklist.rule);
+      messageEvent.target.url = tempAllowedBlacklist.url;
       break;
   }
 }
