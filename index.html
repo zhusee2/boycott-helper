@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>網站抵制小幫手 by zhusee2</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/zhusee2/boycottt-helper">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/zhusee2/boycottt-helper/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/zhusee2/boycottt-helper/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>網站抵制小幫手</h1>
+          <p>網站抵制小幫手 Safari Extension，幫你阻擋你想抵制的網站</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/zhusee2">zhusee2</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <p>《網站抵制小幫手》讓您可以自由設定要抵制的網站，往後再度瀏覽到設定抵制的網站時，小幫手就會提醒您繼續抵制。《網站抵制小幫手》目前提供 Safari Extension 版本。</p>
+
+<h3>
+<a name="%E7%B6%B2%E5%9D%80%E9%81%8E%E6%BF%BE%E6%A0%BC%E5%BC%8F" class="anchor" href="#%E7%B6%B2%E5%9D%80%E9%81%8E%E6%BF%BE%E6%A0%BC%E5%BC%8F"><span class="octicon octicon-link"></span></a>網址過濾格式</h3>
+
+<p>透過《網站抵制小幫手》工具列按鈕新增抵制網站時，預設會抵制整個 domain。但是您也可以指定為以下格式：</p>
+
+<ol>
+<li><code>*.bad.domain.com</code></li>
+<li><code>bad-website.xxx/horrible/*</code></li>
+<li><code>example.com</code></li>
+</ol><h3>
+<a name="%E5%A6%82%E4%BD%95%E5%8F%96%E6%B6%88%E6%8A%B5%E5%88%B6%E7%89%B9%E5%AE%9A%E7%B6%B2%E7%AB%99" class="anchor" href="#%E5%A6%82%E4%BD%95%E5%8F%96%E6%B6%88%E6%8A%B5%E5%88%B6%E7%89%B9%E5%AE%9A%E7%B6%B2%E7%AB%99"><span class="octicon octicon-link"></span></a>如何取消抵制特定網站</h3>
+
+<p>在《網站抵制小幫手》工具列按鈕的選單中，選擇「管理抵制清單⋯」，即可進入編輯抵制清單。抵制清單目前僅提供純文字編輯介面，採取 JSON 格式。請以字串方式存放如上過濾格式，並將字串組成一陣列。範例如下：</p>
+
+<div class="highlight highlight-js"><pre><span class="p">[</span>
+  <span class="s2">"*.bad.domain.com"</span><span class="p">,</span>
+  <span class="s2">"bad-website.xxx/horrible/*"</span><span class="p">,</span>
+  <span class="s2">"example.com"</span>
+<span class="p">]</span>
+</pre></div>
+
+<h3>
+<a name="%E5%95%8F%E9%A1%8C%E5%9B%9E%E5%A0%B1" class="anchor" href="#%E5%95%8F%E9%A1%8C%E5%9B%9E%E5%A0%B1"><span class="octicon octicon-link"></span></a>問題回報</h3>
+
+<p>本專案為開放專案，如遇到任何問題，歡迎<a href="https://github.com/zhusee2/boycottt-helper/issues">到 Github 上進行回報</a>。</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
