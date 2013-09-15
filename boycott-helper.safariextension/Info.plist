@@ -9,7 +9,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>網站抵制小幫手</string>
 	<key>CFBundleIdentifier</key>
-	<string>net.zhusee2.extensions.dov</string>
+	<string>net.zhusee2.extensions.boycott-helper</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
