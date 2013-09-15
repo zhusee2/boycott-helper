@@ -1,0 +1,77 @@
+body {
+  background-color: hsl(0,0%,95%);
+  color: #333;
+  font: 16px/1.25 "Helvetica Neue", Helvetica,  Arial, sans-serif;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h1, p {
+  margin: 1.25em 0;
+}
+
+a {
+  color: hsl(210,50%,50%);
+}
+a:hover {
+  color: hsl(210,65%,55%);
+}
+
+.btn {
+  text-decoration: none;
+  padding: 0.75em;
+}
+.btn-primary {
+  background-color: hsl(210,50%,50%);
+  color: white;
+  text-shadow: 0 1px 1px hsl(210,50%,30%);
+  border: 1px solid hsl(210,50%,40%);
+}
+.btn-primary:hover {
+  background-color: hsl(210,65%,55%);
+  color: white;
+}
+.btn-primary:active {
+  background-color: hsl(210,45%,40%);
+  color: #dedede;
+}
+
+.dl-horizontal dt, .dl-horizontal dd {
+  display: inline-block;
+}
+.dl-horizontal dd {
+  margin-left: 0;
+}
+
+.container {
+  width: 520px;
+  background: white;
+  margin: 100px auto;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0 0px 0px 1px rgba(0,0,0,.1),
+              0 1px 1px 1px rgba(0,0,0,.2);
+}
+.container h1 {
+  text-align: center;
+}
+.container h1:first-child {
+  margin-top: 0;
+}
+
+.blacklist-rule-dl dd {
+  background-color: #efefef;
+  padding: 5px 20px;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 5px;
+}
+
+.alert-actions {
+  text-align: center;
+  margin-top: 80px;
+}
+.alert-actions .btn {
+  margin-left: 1em;
+}
