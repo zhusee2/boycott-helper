@@ -48,16 +48,27 @@ function beforeNavHandler(event) {
   console.log("Before heading to:", event.url);
 
   for (var i = 0; i < blacklist.length; i++) {
-    var regExpRule = interpretBlackListRule(blacklist[i]);
+    var blacklistRule = blacklist[i],
+        regExpRule = interpretBlackListRule(blacklistRule);
 
     if ( event.url.match(regExpRule) ) {
-      console.log("Blacklist Match:", blacklist[i]);
+      console.log("Blacklist Match:", blacklistRule);
       event.preventDefault();
 
-      var encodedRule = encodeURI(blacklist[i]),
-          warningPageUrl = safari.extension.baseURI + "warning.html?rule=" + encodedRule;
+      var encodedRule = encodeURI(blacklistRule),
+          warningPageUrl = safari.extension.baseURI + "warning.html",
+          currentActiveTab = safari.application.activeBrowserWindow.activeTab;
 
-      safari.application.activeBrowserWindow.activeTab.url = warningPageUrl;
+      currentActiveTab.url = warningPageUrl;
+
+      setTimeout(function() {
+        var blacklistWarning = {
+          rule: blacklistRule,
+          url: event.url
+        }
+        console.log(blacklistWarning);
+        currentActiveTab.page.dispatchMessage("blacklistWarning", blacklistWarning);
+      }, 100);
     }
   }
 };
@@ -100,6 +111,10 @@ function messageHandler(messageEvent) {
 
     case "updateBlacklist":
       safari.extension.settings.setItem("blacklist", messageEvent.message);
+      break;
+
+    case "allowOnce":
+      console.log(messageEvent.message);
       break;
   }
 }

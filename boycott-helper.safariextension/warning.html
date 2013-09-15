@@ -24,16 +24,18 @@
 
   <script>
     // Parse current blacklist rule
-    var blacklistRule = "",
-        searchParamMatch = location.search.match(/rule=([^&]+)/);
+    var blacklistRule = "", redirectUrl = "";
 
-    if (searchParamMatch) {
-      blacklistRule = searchParamMatch[1];
-      blacklistRule = decodeURI(blacklistRule);
-      document.getElementById("blacklist-rule").innerText = blacklistRule;
-    }
+    function messageHandler(messageEvent) {
+      if (messageEvent.name == "blacklistWarning") {
+        blacklistRule = messageEvent.message.rule;
+        redirectUrl = messageEvent.message.url;
+        document.getElementById("blacklist-rule").innerText = blacklistRule;
+      }
+    };
 
     document.querySelector('.btn-continue').addEventListener('click', function(event) {
+      safari.self.tab.dispatchMessage("allowOnce", redirectUrl);
       event.preventDefault();
     });
 
@@ -41,6 +43,8 @@
       history.go(-1);
       event.preventDefault();
     });
+
+    safari.self.addEventListener("message", messageHandler);
   </script>
 </body>
 </html>
