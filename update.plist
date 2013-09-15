@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Extension Updates</key>
+   <array>
+     <dict>
+       <key>CFBundleIdentifier</key>
+       <string>net.zhusee2.extensions.boycott-helper</string>
+       <key>Developer Identifier</key>
+       <string>RMKWK5S4J4</string>
+       <key>CFBundleVersion</key>
+       <string>3</string>
+       <key>CFBundleShortVersionString</key>
+       <string>beta1</string>
+       <key>URL</key>
+       <string>http://zhusee2.github.io/boycott-helper/boycott-helper.safariextz</string>
+     </dict>
+   </array>
+</dict>
+</plist>
