@@ -17,9 +17,20 @@
     </dl>
 
     <div class="alert-actions">
-      <a href="#" class="btn-continue">繼續瀏覽</a>
-      <a href="#" class="btn btn-primary btn-cancel">帶我離開這裡</a>
+      <a href="#continue" class="btn-continue">繼續瀏覽</a>
+      <a href="#cancel" class="btn btn-primary btn-cancel">帶我離開這裡</a>
     </div>
   </div>
+
+  <script>
+    document.querySelector('.btn-continue').addEventListener('click', function(event) {
+      event.preventDefault();
+    });
+
+    document.querySelector('.btn-cancel').addEventListener('click', function(event) {
+      history.go(-1);
+      event.preventDefault();
+    });
+  </script>
 </body>
 </html>
