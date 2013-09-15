@@ -13,7 +13,7 @@
 
     <dl class="dl-horizontal blacklist-rule-dl">
       <dt>抵制規則：</dt>
-      <dd>*.domain.com</dd>
+      <dd id="blacklist-rule">*.domain.com</dd>
     </dl>
 
     <div class="alert-actions">
@@ -23,6 +23,16 @@
   </div>
 
   <script>
+    // Parse current blacklist rule
+    var blacklistRule = "",
+        searchParamMatch = location.search.match(/rule=([^&]+)/);
+
+    if (searchParamMatch) {
+      blacklistRule = searchParamMatch[1];
+      blacklistRule = decodeURI(blacklistRule);
+      document.getElementById("blacklist-rule").innerText = blacklistRule;
+    }
+
     document.querySelector('.btn-continue').addEventListener('click', function(event) {
       event.preventDefault();
     });

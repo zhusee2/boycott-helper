@@ -52,10 +52,12 @@ function beforeNavHandler(event) {
 
     if ( event.url.match(regExpRule) ) {
       console.log("Blacklist Match:", blacklist[i]);
+      event.preventDefault();
 
-      if (!confirm("您已經設定要抵制本網站。確定要繼續嗎？")) { // User choose "Cancel"
-        event.preventDefault();
-      }
+      var encodedRule = encodeURI(blacklist[i]),
+          warningPageUrl = safari.extension.baseURI + "warning.html?rule=" + encodedRule;
+
+      safari.application.activeBrowserWindow.activeTab.url = warningPageUrl;
     }
   }
 };
