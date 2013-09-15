@@ -2,22 +2,23 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>編輯抵制清單 | 抵制小幫手</title>
-  <style>
-    #blacklist {
-      width: 80%;
-      font: 16px/1.7 monospace;
-    }
-  </style>
+  <title>編輯抵制清單 | 網站抵制小幫手</title>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>編輯抵制清單</h1>
-  <p>請在下方編輯您的抵制清單。請以 JSON 格式編輯。</p>
+  <div class="container settings-page">
+    <h1>編輯抵制清單</h1>
+    <p>請在下方編輯您的抵制清單。請以 JSON 格式編輯。</p>
 
-  <form action="#">
-    <textarea name="blacklist" id="blacklist" rows="10" placeholder='範例: ["example.com"]'></textarea><br>
-    <button type="submit">儲存</button>
-  </form>
+    <form action="#">
+      <textarea name="blacklist" id="blacklist" rows="10" placeholder='範例: ["example.com"]'></textarea><br>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">儲存</button>
+      </div>
+    </form>
+  </div>
 
   <script>
     var blacklist = [];

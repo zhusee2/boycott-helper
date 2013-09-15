@@ -75,3 +75,16 @@ a:hover {
 .alert-actions .btn {
   margin-left: 1em;
 }
+
+.settings-page.container {
+  width: 720px;
+  margin: 60px auto;
+}
+.settings-page textarea#blacklist {
+  width: 100%;
+  font: 16px/1.7 monospace;
+}
+.form-actions {
+  text-align: right;
+  margin-top: 40px;
+}
