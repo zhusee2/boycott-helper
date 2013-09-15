@@ -90,7 +90,7 @@
 		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>https://raw.github.com/zhusee2/boycottt-helper/master/update.plist</string>
+	<string>https://github.com/zhusee2/boycott-helper/raw/master/update.plist</string>
 	<key>Website</key>
 	<string>http://github.com/zhusee2/boycott-helper/</string>
 </dict>
